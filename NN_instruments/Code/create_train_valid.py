@@ -52,6 +52,14 @@ def main(wind, Train, Valid):
 
 	valid_data, valid_data_pred = create_dataset(wind, data.ix[Valid], cols_list)
 	print "Valid done"
+	
+	train_data.to_csv('../Data/Train_'+str(Train[0])+'-'+str(Train[-11])+'.csv', index = False)
+	train_data_pred.to_csv('../Data/Train_Pred_'+str(Train[0])+'-'+str(Train[-1])+'.csv', index = False)
+
+
+	valid_data.to_csv('../Data/Valid_'+str(Valid[0])+'-'+str(Valid[-1])+'.csv', index = False)
+	valid_data_pred.to_csv('../Data/Valid_Pred_'+str(Valid[0])+'-'+str(Valid[-1])+'.csv', index = False)
+
 
 import sys
 
