@@ -53,12 +53,12 @@ def main(wind, Train, Valid, col):
 	valid_data, valid_data_pred = create_dataset(wind, data.ix[Valid], cols_list)
 	print "Valid done"
 	
-	train_data.to_csv('../Data/Train_'+str(Train[0])+'-'+str(Train[-1])+'_' + instr+'.csv', index = False)
-	train_data_pred.to_csv('../Data/Train_Pred_'+str(Train[0])+'-'+str(Train[-1])+'_' + instr+'.csv', index = False)
+	train_data.to_csv('../Data/' + instr + '/Train_'+str(Train[0])+'-'+str(Train[-1])+'_' + instr+'.csv', index = False)
+	train_data_pred.to_csv('../Data/' + instr + '/Train_Pred_'+str(Train[0])+'-'+str(Train[-1])+'_' + instr+'.csv', index = False)
 
 
-	valid_data.to_csv('../Data/Valid_'+str(Valid[0])+'-'+str(Valid[-1])+'_' + instr+'.csv', index = False)
-	valid_data_pred.to_csv('../Data/Valid_Pred_'+str(Valid[0])+'-'+str(Valid[-1])+'_' + instr+'.csv', index = False)
+	valid_data.to_csv('../Data/' + instr + '/Valid_'+str(Valid[0])+'-'+str(Valid[-1])+'_' + instr+'.csv', index = False)
+	valid_data_pred.to_csv('../Data/'+ instr + '/Valid_Pred_'+str(Valid[0])+'-'+str(Valid[-1])+'_' + instr+'.csv', index = False)
 
 
 import sys
@@ -85,14 +85,14 @@ if len(sys.argv[1].split(','))>3:
 	col = y[-1]
 
 else:
-	train = [1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999]
-	valid = [2000,2001,2002,2003,2004]
+	train = [1989,1990,1991,1992,1993,1994,1995,1996,1997,1998,1999,2000,2001,2002,2003,2004]
+	valid = [2005,2006,2007]
 	if len(sys.argv[1].split(',')) :
 		wind = int(sys.argv[1].split(',')[0])
 		col = sys.argv[1].split(',')[1]
 
-cols = ['es']
-#cols = ['fdx','ffi','fgbl','fgbm','flg','fv','hsi','jgb','mc','mfxi','nq','re','ssi','stxe','ty','us','ym']
+cols = ['fce']
+#cols = ['cgb', 'es','fce', 'fdx','ffi','fgbl','fgbm','flg','fv','hsi','jgb','mc','mfxi','nq','re','ssi','stxe','ty','us','ym']
 for co in cols:
 
 	main(wind, train, valid, str(co))

@@ -34,11 +34,11 @@ dofile '1_data.lua'
 dofile '2_model.lua'
 dofile '3_loss.lua'
 dofile '4_train.lua'
-print('../Results/Predictions/instr/' .. opt.nhidden1 .. '_Metrics.log')
+dofile '5_test.lua'
 local i = 1
 x = {}
 y = {}
-trainMetrics = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/' .. opt.nhidden1 .. '_Metrics.log'))
+trainMetrics = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/' .. opt.nhidden1 .. '_Metrics_test05-07.log'))
 
 
 while i<=opt.epoch do
@@ -49,6 +49,8 @@ while i<=opt.epoch do
   	i = i+1
 
 end
+
+test()
 
 
 
