@@ -20,16 +20,16 @@ if not opt then
    opt = cmd:parse(arg or {})
 end
 
---train_tensor, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainD .. opt.instr .. '.csv' , {exclude='date'})
-train_tensor, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainD .. 'all' .. '.csv' , {exclude='date'})
+train_tensor, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainD .. opt.instr .. '.csv' , {exclude='date'})
+--train_tensor, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainD .. 'all' .. '.csv' , {exclude='date'})
 valid_tensor, cols2 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.validD .. opt.instr .. '.csv', {exclude='date'})
 
 train_in = train_tensor:narrow(2,1,100):clone()
 valid_in = valid_tensor:narrow(2,1,100):clone()
 
 
---train_tensors, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainP .. opt.instr .. '.csv')
-train_tensors, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainP .. 'all' .. '.csv')
+train_tensors, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainP .. opt.instr .. '.csv')
+--train_tensors, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainP .. 'all' .. '.csv')
 valid_tensors, cols2 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.validP .. opt.instr .. '.csv')
 
 train_out = train_tensors:narrow(2,2,1):clone()

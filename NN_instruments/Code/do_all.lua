@@ -34,7 +34,7 @@ dofile '1_data.lua'
 dofile '2_model.lua'
 dofile '3_loss.lua'
 dofile '4_train.lua'
-dofile '5_test.lua'
+--dofile '5_test.lua'
 local i = 1
 x = {}
 y = {}
@@ -50,8 +50,10 @@ while i<=opt.epoch do
 
 end
 
-test()
-
+--test()
+filename = paths.concat('../Models/model_' .. opt.instr .. '.net')
+print('==> saving model to '..filename)
+torch.save(filename, model)
 
 
 
