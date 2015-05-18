@@ -118,7 +118,7 @@ function train()
 	-- Validation error calculation
 	local error_vf = 0
 	confusion_valid = optim.ConfusionMatrix(classes)
-	for j=1, valid_in:size()[1]-opt.batchSize do
+	for j=1, valid_in:size()[1] do
 	        local vd_in = valid_dataset[j][1]:reshape(100,1)
 		local pred_valid = model:forward(vd_in)
 		local error_v = criterion:forward(pred_valid, valid_dataset[j][2][1])

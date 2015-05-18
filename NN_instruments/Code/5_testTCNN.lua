@@ -17,9 +17,9 @@ if not opt then
    opt = cmd:parse(arg or {})
 end 
 
-testLogger1 = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/Output_Predictions_00-04_full_' .. opt.instr .. '.log'))
+testLogger1 = optim.Logger(paths.concat('../Results/PredictionsTCNN/' .. opt.instr .. '/Output_Predictions_05-07_' .. opt.instr .. '.log'))
 testLogger1:add{'Date', 'Predictions', 'Original'}
-testLogger2 = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/Output_confusion_mat_00-04_full_' .. opt.instr .. '.log'))
+testLogger2 = optim.Logger(paths.concat('../Results/PredictionsTCNN/' .. opt.instr .. '/Output_confusion_mat_05-07_' .. opt.instr .. '.log'))
 
 classes = {'0','1'}
 confusion_test = optim.ConfusionMatrix(classes)
@@ -37,11 +37,12 @@ function test()
    	   end
 	end
 	for j=1, valid_in:size()[1] do
-		local vd_in = valid_dataset[j][1]
+		local vd_in = valid_dataset[j][1]:reshape(100,1)
 		local pred_valid = model:forward(vd_in)
 		local error_v = criterion:forward(pred_valid, valid_dataset[j][2][1])
 		index_valid = argmax_1D(pred_valid)
 		confusion_test:add(index_valid, valid_dataset[j][2][1])
+		--print(confusion_test)
 		testLogger1:add{string.format("%.0f",valid_tensors[j][1]),string.format("%.0f",valid_out[j][1]), string.format("%.0f",index_valid)}
 		
 	end

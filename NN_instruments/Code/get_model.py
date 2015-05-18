@@ -4,7 +4,7 @@ import numpy as np
 #dirs = ['cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'jgb', 'mc', 'mfxi', 'nq', 're', 'ssi', 'stxe', 'ty', 'us', 'ym']
 
 dirs = ['all']
-l = ['5_Metrics_test05-07.log', '10_Metrics_test05-07.log', '15_Metrics_test05-07.log', '20_Metrics_test05-07.log']
+l = ['5_Metrics_test05-07.log','15_Metrics_test05-07.log','10_Metrics_test05-07.log','20_Metrics_test05-07.log']
 i = 0
 n_array = []
 for ds in dirs:
