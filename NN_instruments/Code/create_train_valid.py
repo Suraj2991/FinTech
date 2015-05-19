@@ -91,8 +91,7 @@ else:
 		wind = int(sys.argv[1].split(',')[0])
 		col = sys.argv[1].split(',')[1]
 
-cols = ['fce']
-#cols = ['cgb', 'es','fce', 'fdx','ffi','fgbl','fgbm','flg','fv','hsi','jgb','mc','mfxi','nq','re','ssi','stxe','ty','us','ym']
+cols = ['fce', 'cgb', 'es','fce', 'fdx','ffi','fgbl','fgbm','flg','fv','hsi','jgb','mc','mfxi','nq','re','ssi','stxe','ty','us','ym']
 for co in cols:
 
 	main(wind, train, valid, str(co))
