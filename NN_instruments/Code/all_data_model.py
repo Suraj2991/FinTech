@@ -8,8 +8,8 @@ def create_big_data(file1, file2):
 
 	y = pd.DataFrame()
 	for fs in dirs:
-		x_init = pd.read_csv(fs+'/'+file1+ fs+'.csv')
-		x_pred = pd.read_csv(fs + '/' + file2+ fs + '.csv')
+		x_init = pd.read_csv('../Data/' + fs+'/'+file1+ fs+'.csv')
+		x_pred = pd.read_csv('../Data/' +fs + '/' + file2+ fs + '.csv')
 	
 		x = x_init.join(x_pred)
 	
@@ -24,11 +24,11 @@ final_data_train, final_data_pred_t = create_big_data('Train_1989-2004_', 'Train
 
 final_data_valid, final_data_pred_v = create_big_data('Valid_2005-2007_', 'Valid_Pred_2005-2007_')
 
-final_data_train.to_csv('../Data/Train_1989-2004_all.csv', index = False)
-final_data_pred_t.to_csv('../Data/Train_Pred_1989-2004_all.csv', index= False)
+final_data_train.to_csv('../Data/all/Train_1989-2004_all.csv', index = False)
+final_data_pred_t.to_csv('../Data/all/Train_Pred_1989-2004_all.csv', index= False)
 
 
-final_data_valid.to_csv('../Data/Valid_2005-2009_all.csv', index = False)
-final_data_pred_v.to_csv('../Data/Valid_Pred_2005-2009_all.csv', index = False)
+final_data_valid.to_csv('../Data/all/Valid_2005-2007_all.csv', index = False)
+final_data_pred_v.to_csv('../Data/all/Valid_Pred_2005-2007_all.csv', index = False)
 
 
