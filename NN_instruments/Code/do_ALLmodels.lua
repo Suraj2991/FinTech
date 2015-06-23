@@ -21,6 +21,7 @@ cmd:option('-trainP', '../Data/Train_Pred_1989-1999_', 'Train predictions')
 cmd:option('-validD', '../Data/Valid_2000-2004_', 'Valid dataset directory+file')
 cmd:option('-validP', '../Data/Valid_Pred_2000-2004_', 'Valid Predictions')
 cmd:option('-instr', 'ssi', 'Instrument')
+cmd:option('-year', '2000-2004', 'Year being predicted')
 cmd:text()
 
 --'cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'jgb', 'mc', 'mfxi', 'nq', 're', 'ssi', 'stxe', 'ty', 'us', 'ym'
@@ -29,7 +30,7 @@ cmd:text()
 
 opt = cmd:parse(arg or {})
 torch.manualSeed(opt.seed)
-dofile '1_data.lua'
+dofile '1_dataAll.lua'
 
 dofile '2_model.lua'
 dofile '3_loss.lua'
@@ -38,7 +39,7 @@ dofile '5_testAll.lua'
 local i = 1
 x = {}
 y = {}
-trainMetrics = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/' .. opt.nhidden1 .. '_Metrics_test05-07.log'))
+trainMetrics = optim.Logger(paths.concat('../Results/Predictions/' .. opt.instr .. '/' .. opt.nhidden1 .. '_Metrics_test' .. opt.year .. '.log'))
 
 
 while i<=opt.epoch do
@@ -49,6 +50,7 @@ while i<=opt.epoch do
   	i = i+1
 
 end
+
 test('cgb')
 test( 'es')
 test('fce')
@@ -71,6 +73,8 @@ test('us')
 test('ym')
 
 
-
+filename = paths.concat('../Models/model_all.net')
+print('==> saving model to '..filename)
+torch.save(filename, model)
 
 

@@ -1,10 +1,11 @@
 import pandas as pd
 import numpy as np
 
-dirs = ['cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'jgb', 'mc', 'mfxi', 'nq', 're', 'ssi', 'stxe', 'ty', 'us', 'ym']
+#dirs = ['cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'jgb', 'mc', 'mfxi', 'nq', 're', 'ssi', 'stxe', 'ty', 'us', 'ym']
 import sys
 dir_res = sys.argv[1]
 year = sys.argv[2]
+dirs = ['all']
 l = ['5_Metrics_test','15_Metrics_test','10_Metrics_test','20_Metrics_test']
 i = 0
 n_array = []
@@ -26,5 +27,5 @@ for ds in dirs:
 
 y = pd.DataFrame(n_array, columns=['instrument', 'file', 'epochs', 'accuracy'])
 
-y.to_csv('../Results/' + dir_res + '/'+ 'File_Model.csv', index = False)
+y.to_csv('../Results/' + dir_res + '/'+ 'File_ModelALL.csv', index = False)
 

@@ -21,7 +21,7 @@ cmd:option('-trainP', '../Data/Train_Pred_1989-1999_', 'Train predictions')
 cmd:option('-validD', '../Data/Valid_2000-2004_', 'Valid dataset directory+file')
 cmd:option('-validP', '../Data/Valid_Pred_2000-2004_', 'Valid Predictions')
 cmd:option('-instr', 'ssi', 'Instrument')
-cmd:option('-year', '00-04', 'Years')
+cmd:option('-year', '2000-2004', 'Years')
 cmd:text()
 
 --'cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'jgb', 'mc', 'mfxi', 'nq', 're', 'ssi', 'stxe', 'ty', 'us', 'ym'
@@ -32,10 +32,10 @@ opt = cmd:parse(arg or {})
 torch.manualSeed(opt.seed)
 dofile '1_data.lua'
 
-dofile '2_model.lua'
+dofile '2_modelTCNN.lua'
 dofile '3_loss.lua'
-dofile '4_train.lua'
-dofile '5_test.lua'
+dofile '4_trainTCNN.lua'
+dofile '5_testTCNN.lua'
 local i = 1
 x = {}
 y = {}

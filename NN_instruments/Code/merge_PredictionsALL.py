@@ -7,8 +7,8 @@ dirs = ['cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'j
 y = pd.DataFrame()
 
 for ds in dirs:
-	x = pd.read_csv('../Results/'+dir_res+'/'+ds+'/Output_Predictions_00-04'+ds+'.log', sep = '\t', header = True, usecols = ['Date', 'Predictions', 'Original'])
+	x = pd.read_csv('../Results/'+dir_res+'/'+ds+'/Output_Predictions_00-04_full_'+ds+'.log', sep = '\t', header = True, usecols = ['Date', 'Predictions', 'Original'])
 	x['instr'] = [ds]*len(x)
 	y = pd.concat([y,x])
 
-y.to_csv('../Results/final_data_'+ year+'.csv', index = False)
+y.to_csv('../Results/final_data_'+ year+'ALL.csv', index = False)
