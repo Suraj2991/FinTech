@@ -16,6 +16,7 @@ if not opt then
    cmd:option('-validD', '../Data/Valid_2000-2004.csv', 'Valid dataset directory+file')
    cmd:option('-validP', '../Data/Valid_Pred_2000-2004.csv', 'Valid Predictions')
    cmd:option('-instr', 'ssi', 'Instrument')
+   cmd:option('-window', 10, 'Window Size')
    cmd:text()
    opt = cmd:parse(arg or {})
 end
@@ -23,10 +24,10 @@ end
 train_tensor, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainD .. opt.instr .. '.csv' , {exclude='date'})
 --train_tensor, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainD .. 'all' .. '.csv' , {exclude='date'})
 valid_tensor, cols2 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.validD .. opt.instr .. '.csv', {exclude='date'})
-
-train_in = train_tensor:narrow(2,1,100):clone()
-valid_in = valid_tensor:narrow(2,1,100):clone()
-
+win = opt.window*20
+train_in = train_tensor:narrow(2,1,win):clone()
+valid_in = valid_tensor:narrow(2,1,win):clone()
+print(train_in[1])
 
 train_tensors, cols1 = csv2t.load('../Data/' .. opt.instr .. '/' .. opt.trainP .. opt.instr .. '.csv')
 --train_tensors, cols1 = csv2t.load('../Data/' .. 'all' .. '/' .. opt.trainP .. 'all' .. '.csv')

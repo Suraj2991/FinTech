@@ -5,7 +5,7 @@ dirs = ['cgb', 'es', 'fce', 'fdx', 'ffi', 'fgbl', 'fgbm', 'flg', 'fv', 'hsi', 'j
 import sys
 dir_res = sys.argv[1]
 year = sys.argv[2]
-l = ['5_Metrics_test','15_Metrics_test','10_Metrics_test','20_Metrics_test']
+l = ['5_Metrics_test','15_Metrics_test','10_Metrics_test','20_Metrics_test','25_Metrics_test', '30_Metrics_test', '35_Metrics_test', '40_Metrics_test', '45_Metrics_test', '50_Metrics_test', '60_Metrics_test', '70_Metrics_test', '80_Metrics_test', '90_Metrics_test', '100_Metrics_test' ]
 i = 0
 n_array = []
 for ds in dirs:

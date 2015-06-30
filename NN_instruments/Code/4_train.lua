@@ -86,6 +86,7 @@ function train()
 		f = 0
 
 		for i = 1,#inputs do
+			--print(inputs[i])
 			local pred_output = model:forward(inputs[i])
 			local err = criterion:forward(pred_output, targets[i][1])
 			f = f + err

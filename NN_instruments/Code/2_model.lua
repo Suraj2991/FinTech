@@ -20,7 +20,7 @@ if not opt then
    cmd:option('-nhidden4',0,'Number of hidden neurons in 4th Layer')
    cmd:option('-nhidden5',0,'Number of hidden neurons in 5th Layer')
    cmd:option('-nhidden6',0,'Number of hidden neurons in 6th Layer')
-
+   cmd:option('-window', 10, 'Window Size')
    cmd:text()
    opt = cmd:parse(arg or {})
    torch.manualSeed(opt.seed)
@@ -29,7 +29,7 @@ end
 print '==> construct model'
 
 local hid_1 = opt.nhidden1
-ninputs=100
+ninputs=opt.window*20
 noutputs=2
 
 model = nn.Sequential()
